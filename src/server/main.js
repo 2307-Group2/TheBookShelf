@@ -7,6 +7,10 @@ app.get("/hello", (req, res) => {
   res.send("Hello Vite + React!");
 });
 
+app.get("/goodbye", (req, res) => {
+  res.send("Bye From Vite + React!");
+});
+
 ViteExpress.listen(app, 3000, () =>
   console.log("Server is listening on port 3000...")
 );
