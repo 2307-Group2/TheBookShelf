@@ -14,12 +14,12 @@ router.get("/", async (req, res, next) => {
 
 router.get("/orders/:id", async (req, res, next) => {
   try {
-    const orders = await prisma.user.findUnique({
+    const orders = await prisma.users.findUnique({
       where: {
         id: Number(req.params.id),
       },
       include: {
-        Cart: true,
+        is_Cart: true,
       },
     });
   } catch (err) {
@@ -29,3 +29,35 @@ router.get("/orders/:id", async (req, res, next) => {
 
 
 module.exports = router;
+
+
+// router.get("/:id/categories", async(req,res,next)=>{
+//   try{
+//       const post = await prisma.post.findUnique({
+//           where:{
+//               id: Number(req.params.id)
+//           },
+//           include:{
+//               categories: true
+//           }
+//       });
+//       res.send(post.categories)
+//   }catch(err){
+//       next(err)
+//   }
+// })
+// // grabs all records that have an association with the shown category
+// router.get("category/:id", async(req,res,next)=>{
+//   try{
+//       const collection = await prisma.categoriesOnPosts.findMany({
+//           where:{
+//               category:{
+//                   id: req.params.id
+//               }
+//           },
+//       });
+//       res.send(collection)
+//   }catch(err){
+//       next(err)
+//   }
+// })
