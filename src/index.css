@@ -100,3 +100,12 @@
 .checkoutBtn:hover {
   animation: bounce 1s;
 }
+.top{
+  background-color: lightgray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  height: 150px;
+ 
+}
