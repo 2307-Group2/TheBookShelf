@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAddUserMutation } from "../../../reducers/api";
 import TextInput from "../../inputs/TextInput";
 
-function AddUser({ onAdd }) {
+function AddUser({ onUserAdded, refetch }) {
   const initialFormData = {
     firstName: "",
     lastName: "",
@@ -22,7 +22,10 @@ function AddUser({ onAdd }) {
       setUserData(initialFormData);
       refetch();
       onUserAdded && onUserAdded();
-    } catch {}
+    } catch {
+      err;
+    }
+    console.error("Error adding user:", err.message);
   };
 
   return (
@@ -88,7 +91,7 @@ function AddUser({ onAdd }) {
           />
         </div>
         <button type="submit" className="btn btn-primary" disabled={isLoading}>
-          Add User
+          {isLoading ? "Adding..." : "Add User"}
         </button>
       </form>
     </div>

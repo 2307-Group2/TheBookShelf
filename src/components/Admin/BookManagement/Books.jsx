@@ -12,7 +12,12 @@ import AddBookForm from "./AddBookForm";
 function Books() {
   const { data, isLoading, refetch } = useGetBooksQuery();
   const [isAddingBook, setIsAddingBook] = useState(false);
+  // const [editBook] = useEditBookMutation();
   console.log("book", data);
+
+  const handleBookEdited = () => {
+    refetch();
+  };
 
   return (
     <div className="container mt-5">
@@ -32,7 +37,14 @@ function Books() {
       ) : data.length === 0 ? (
         <h1 className="my-3">No Books Found</h1>
       ) : (
-        data.map((book) => <BookCard key={book.id} book={book} />)
+        data.map((book) => (
+          <BookCard
+            key={book.id}
+            book={book}
+            onEdited={handleBookEdited}
+            onDeleted={refetch}
+          />
+        ))
       )}
     </div>
   );

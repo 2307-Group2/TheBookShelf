@@ -38,6 +38,7 @@ function Users() {
   };
 
   const handelUserAdded = () => {
+    refetch();
     setShowAddUserForm(false);
   };
 
@@ -99,7 +100,9 @@ function Users() {
       <Button variant="success" className="mb-3" onClick={toggleAddUserForm}>
         {showAddUserForm ? "Hide Add User Form" : "Add User"}
       </Button>
-      {showAddUserForm && <AddUser onUserAdded={handelUserAdded} />}
+      {showAddUserForm && (
+        <AddUser onUserAdded={handelUserAdded} refetch={refetch} />
+      )}
 
       <UserList
         users={filteredUser}
