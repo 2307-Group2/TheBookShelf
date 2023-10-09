@@ -64,30 +64,53 @@ const ViewCart = () => {
     <div className="content">
       {loggedIn ? (
         <>
-          <h2>Your Cart</h2>
+          <h2
+            style={{
+              fontSize: "28px",
+              fontWeight: "bold",
+              color: "#333",
+              borderBottom: "2px solid #333",
+              paddingBottom: "10px",
+              paddingLeft: "10px",
+            }}
+          >
+            Your Cart
+          </h2>
           <div className="bookContainer">
             {cart.map((i) => (
               <CartItemDB onClickFunc={onDelete} book={i} />
             ))}
           </div>
 
-          <h2>Total Price: ¥{totalPrice}</h2>
-<section>
-<Link to="/checkout">Checkout</Link>
-</section>
-       
+          <h2 className="totalPrice">Total Price: ¥{totalPrice}</h2>
+          <section>
+            <Link to="/checkout">Checkout</Link>
+          </section>
         </>
       ) : (
         <>
-          <h2>Your Cart</h2>
+          <h2
+            style={{
+              fontSize: "28px",
+              fontWeight: "bold",
+              color: "#333",
+              borderBottom: "2px solid #333",
+              paddingBottom: "10px",
+              paddingLeft: "10px",
+            }}
+          >
+            Your Cart
+          </h2>
+
           <div className="guestCart">
-          {guestCart.map((i) => (
-            <CartItemLS onClickFunc={handleRemoveFromGuestCart} book={i} />
-          ))}
+            {guestCart.map((i) => (
+              <CartItemLS onClickFunc={handleRemoveFromGuestCart} book={i} />
+            ))}
           </div>
-         
-          <h2>Total Price: ¥{totalGuestPrice}</h2>
-          <button className="checkoutBtn"
+
+          <h2 className="totalPrice">Total Price: ¥{totalGuestPrice}</h2>
+          <button
+            className="checkoutBtn"
             style={{
               marginTop: "90px",
               transform: "translateX(40%)",
