@@ -74,7 +74,7 @@ const ViewCart = () => {
               paddingLeft: "10px",
             }}
           >
-            Your Cart
+            My Cart
           </h2>
           <div className="bookContainer">
             {cart.map((i) => (
@@ -99,7 +99,7 @@ const ViewCart = () => {
               paddingLeft: "10px",
             }}
           >
-            Your Cart
+            My Cart
           </h2>
 
           <div className="guestCart">
