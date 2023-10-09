@@ -7,7 +7,7 @@ import {
 } from "../../../reducers/api";
 import { useState } from "react";
 
-function BookCard({ book }) {
+function BookCard({ book, onEdited, onDeleted }) {
   const [deleteBook] = useDeleteBookMutation();
   const [isEditing, setIsEditing] = useState(false);
   const [editBook] = useEditBookMutation();
@@ -31,6 +31,7 @@ function BookCard({ book }) {
   const handleDeleteClick = async () => {
     try {
       await deleteBook(book.id);
+      onDeleted();
     } catch (error) {
       console.error("Error deleting book:", error);
     }
@@ -56,6 +57,7 @@ function BookCard({ book }) {
         genre: updatedGenre,
       });
       alert("Book edited successfully!");
+      onEdited && onEdited();
       toggleEdit();
     } catch (error) {
       console.error("Error editing book:", error);

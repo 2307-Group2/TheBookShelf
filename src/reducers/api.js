@@ -53,6 +53,7 @@ export const storeApi = createApi({
           body,
         };
       },
+      invalidatesTags: [{ type: 'books', id: 'LIST' }]
     }),
     //User endpoints
     getUsers: builder.query({
