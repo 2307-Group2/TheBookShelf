@@ -80,9 +80,12 @@ const ViewCart = () => {
       ) : (
         <>
           <h2>Your Cart</h2>
+          <div className="guestCart">
           {guestCart.map((i) => (
             <CartItemLS onClickFunc={handleRemoveFromGuestCart} book={i} />
           ))}
+          </div>
+         
           <h2>Total Price: ¥{totalGuestPrice}</h2>
           <button className="checkoutBtn"
             style={{
